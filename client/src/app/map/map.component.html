@@ -1,7 +1,14 @@
 <div #mapContainer id="map-container"></div>
 <div style="position: absolute; top: 10px; right: 10px; background: white; padding: 10px; max-width: 300px; z-index: 10; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
 	<h3>Route Instructions</h3>
-	<!-- <ol>
+	<button *ngIf="routeInstructions.length > 0 && !driveMode" (click)="startDrive()">Start Drive</button>
+	<ng-container *ngIf="driveMode">
+		<div style="margin: 10px 0; font-size: 1.2em; font-weight: bold;">{{ routeInstructions[currentStepIndex] }}</div>
+		<button (click)="prevStep()" [disabled]="currentStepIndex === 0">Previous</button>
+		<button (click)="nextStep()" [disabled]="currentStepIndex === routeInstructions.length - 1">Next</button>
+		<div style="margin-top: 10px; font-size: 0.9em; color: #888;">Step {{ currentStepIndex + 1 }} of {{ routeInstructions.length }}</div>
+	</ng-container>
+	<ol *ngIf="!driveMode">
 		<li *ngFor="let instruction of routeInstructions">{{ instruction }}</li>
-	</ol> -->
+	</ol>
 </div>
