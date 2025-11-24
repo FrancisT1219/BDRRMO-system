@@ -43,4 +43,3 @@ Thumbs.db
 
 .env
 .env.local
-/src/environments/**
